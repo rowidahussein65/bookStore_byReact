@@ -1,0 +1,95 @@
+{
+  "books": [
+    {
+      "id": "1",
+      "title": "Atomic Habits",
+      "author": "James Clear",
+      "year": 2018,
+      "genre": "Self-development"
+    },
+    {
+      "id": "2",
+      "title": "The Lean Startup",
+      "author": "Eric Ries",
+      "year": 2011,
+      "genre": "Business"
+    },
+    {
+      "id": "3",
+      "title": "The Subtle Art of Not Giving a F*ck",
+      "author": "Mark Manson",
+      "year": 2016,
+      "genre": "psychology"
+    },
+    {
+      "id": "4",
+      "title": "Educated",
+      "author": "Tara Westover",
+      "year": 2018,
+      "genre": "Memoir"
+    },
+    {
+      "id": "5",
+      "title": "Deep Work",
+      "author": "Cal Newport",
+      "year": 2016,
+      "genre": "Productivity"
+    },
+    {
+      "id": "6",
+      "title": "The Power of Now",
+      "author": "Eckhart Tolle",
+      "year": 1997,
+      "genre": "Spirituality"
+    },
+    {
+      "id": "7",
+      "title": "Sapiens: A Brief History of Humankind",
+      "author": "Yuval Noah Harari",
+      "year": 2011,
+      "genre": "History"
+    },
+    {
+      "id": "8",
+      "title": "Becoming",
+      "author": "Michelle Obama",
+      "year": 2018,
+      "genre": "Biography"
+    },
+    {
+      "id": "9",
+      "title": "Rich Dad Poor Dad",
+      "author": "Robert T. Kiyosaki",
+      "year": 1997,
+      "genre": "Finance"
+    },
+    {
+      "id": "10",
+      "title": "The Alchemist",
+      "author": "Paulo Coelho",
+      "year": 1988,
+      "genre": "Fiction"
+    },
+    {
+      "id": "4841",
+      "title": "El-Galaaad",
+      "author": "rowida",
+      "year": "2004",
+      "genre": "Slavery"
+    },
+    {
+      "id": "d2e4",
+      "title": "nn",
+      "author": "mm",
+      "price": "12",
+      "description": "nn"
+    },
+    {
+      "id": "878e",
+      "title": "a",
+      "author": "a",
+      "year": "1",
+      "genre": "1"
+    }
+  ]
+}

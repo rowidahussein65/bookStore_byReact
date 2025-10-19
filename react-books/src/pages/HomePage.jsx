@@ -14,24 +14,24 @@ function HomePage() {
 
   const deleteB = (id) => {
     Swal.fire({
-      title: "هل أنت متأكد؟ 😥",
-      text: "سيتم حذف هذا الكتاب نهائيًا!",
+      title: "Are you sure? 😥",
+      text: "This book will be permanently deleted!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "نعم، احذفه!",
-      cancelButtonText: "إلغاء",
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "Cancel",
     }).then((result) => {
       if (result.isConfirmed) {
         deleteBook(id).then(() => {
           setBooks(Books.filter((book) => book.id !== id));
 
           Swal.fire({
-            title: "تم الحذف بنجاح 🎉",
-            text: "تم حذف الكتاب من القائمة.",
+            title: "Deleted Successfully 🎉",
+            text: "The book has been removed from the list.",
             icon: "success",
-            confirmButtonText: "تمام",
+            confirmButtonText: "OK",
           });
         });
       }

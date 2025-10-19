@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
 import { getBookById, updateBook } from "../services/Books.services";
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
-
-
+import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Edit() {
   const navigate = useNavigate();
-
   const { id } = useParams();
 
   const [book, setBook] = useState({
@@ -22,29 +19,43 @@ function Edit() {
     getBookById(id).then((response) => {
       setBook(response.data);
     });
-  }, []);
+  }, [id]);
 
   const editBook = (e) => {
     e.preventDefault();
-    if (
-      book.title == "" ||
-      book.author == "" ||
-      book.year == "" ||
-      book.genre == ""
-    ) {
-      alert("All fields are required");
+    if (!book.title || !book.author || !book.year || !book.genre) {
+      Swal.fire({
+        icon: "warning",
+        title: "Missing Fields",
+        text: "Please fill in all fields before submitting.",
+      });
       return;
-    } else {
-      updateBook(id, book);
-      alert("Book edited successfully");
-      navigate("/");
     }
+
+    updateBook(id, book)
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Book Updated!",
+          text: "The book has been successfully updated.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        setTimeout(() => navigate("/"), 1500);
+      })
+      .catch(() => {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Something went wrong while updating the book.",
+        });
+      });
   };
 
   return (
     <>
-      <h1 className="w-100 text-center my-4">Add Book</h1>
-      <form action="" className="" onSubmit={editBook}>
+      <h1 className="w-100 text-center my-4">Edit Book</h1>
+      <form onSubmit={editBook}>
         <div className="mb-3 container w-25">
           <label htmlFor="title" className="form-label">
             Title
@@ -57,6 +68,7 @@ function Edit() {
             value={book.title}
           />
         </div>
+
         <div className="mb-3 container w-25">
           <label htmlFor="author" className="form-label">
             Author
@@ -69,6 +81,7 @@ function Edit() {
             value={book.author}
           />
         </div>
+
         <div className="mb-3 container w-25">
           <label htmlFor="year" className="form-label">
             Year
@@ -81,6 +94,7 @@ function Edit() {
             value={book.year}
           />
         </div>
+
         <div className="mb-3 container w-25">
           <label htmlFor="genre" className="form-label">
             Genre
@@ -93,8 +107,9 @@ function Edit() {
             value={book.genre}
           />
         </div>
+
         <div className="mb-3 container w-25">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary w-100">
             Update Book
           </button>
         </div>

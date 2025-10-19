@@ -10,6 +10,8 @@ import Edit from "./pages/Edit";
 import Details from "./pages/Details";
 import Create from "./pages/Create";
 import Delete from "./pages/Delete";
+import Contact from "./pages/Contact";
+
 function App() {
   return (
     <>

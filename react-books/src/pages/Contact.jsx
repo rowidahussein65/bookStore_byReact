@@ -16,34 +16,41 @@ function Contact() {
         () => {
           Swal.fire({
             icon: "success",
-            title: "Message sent successfully!",
+            title: "Message Sent Successfully!",
+            text: "Thank you for contacting us. We’ll get back to you soon.",
             showConfirmButton: false,
-            timer: 1500,
+            timer: 2000,
           });
+          form.current.reset();
         },
         (error) => {
-          console.error("FAILED...", error);
+          console.error("Email send failed:", error);
           Swal.fire({
             icon: "error",
-            title: "Message failed!",
-            text: "Please try again later.",
+            title: "Oops!",
+            text: "Something went wrong. Please try again later.",
+            confirmButtonColor: "#000",
           });
         }
       );
   };
 
   return (
-    <div className="w-50 shadow m-auto text-center rounded-2 mt-3">
-      <div className="w-100 text-center my-4">
-        <h3>Contact</h3>
+    <div className="w-50 shadow-lg p-4 rounded-4 m-auto mt-5 bg-white">
+      <div className="text-center mb-4">
+        <h3 className="fw-bold">Contact Us</h3>
+        <p className="text-muted">
+          We'd love to hear from you! Please fill out the form below.
+        </p>
       </div>
+
       <form
         ref={form}
         onSubmit={sendEmail}
-        className="d-flex flex-column gap-2 p-4 text-start"
+        className="d-flex flex-column gap-3"
       >
-        <div className="d-flex flex-column gap-1">
-          <label htmlFor="name" className="fw-medium fs-6">
+        <div>
+          <label htmlFor="name" className="form-label fw-semibold">
             Your Name
           </label>
           <input
@@ -51,12 +58,13 @@ function Contact() {
             id="name"
             className="form-control"
             name="user_name"
+            placeholder="Enter your name"
             required
           />
         </div>
 
-        <div className="d-flex flex-column gap-1">
-          <label htmlFor="email" className="fw-medium fs-6">
+        <div>
+          <label htmlFor="email" className="form-label fw-semibold">
             Your Email
           </label>
           <input
@@ -64,25 +72,30 @@ function Contact() {
             id="email"
             className="form-control"
             name="user_email"
+            placeholder="Enter your email"
             required
           />
         </div>
 
-        <div className="d-flex flex-column gap-1">
-          <label htmlFor="message" className="fw-medium fs-6">
+        <div>
+          <label htmlFor="message" className="form-label fw-semibold">
             Your Message
           </label>
           <textarea
             id="message"
             className="form-control"
             name="message"
+            rows="5"
+            placeholder="Write your message here..."
             required
-          />
+          ></textarea>
         </div>
 
-        <button type="submit" className="btn btn-dark w-25">
-          Send
-        </button>
+        <div className="text-center">
+          <button type="submit" className="btn btn-dark px-4 py-2">
+            Send Message
+          </button>
+        </div>
       </form>
     </div>
   );

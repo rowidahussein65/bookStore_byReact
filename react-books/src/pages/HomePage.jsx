@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { getBooks, deleteBook } from "../services/Books.services";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+
 function HomePage() {
   const [Books, setBooks] = useState([]);
 
@@ -11,12 +13,31 @@ function HomePage() {
   }, []);
 
   const deleteB = (id) => {
-    deleteBook(id);
-    console.log("Deleted", id);
-    alert("Book deleted successfully");
-    
-    setBooks(Books.filter((book) => book.id !== id));
+    Swal.fire({
+      title: "هل أنت متأكد؟ 😥",
+      text: "سيتم حذف هذا الكتاب نهائيًا!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "نعم، احذفه!",
+      cancelButtonText: "إلغاء",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteBook(id).then(() => {
+          setBooks(Books.filter((book) => book.id !== id));
+
+          Swal.fire({
+            title: "تم الحذف بنجاح 🎉",
+            text: "تم حذف الكتاب من القائمة.",
+            icon: "success",
+            confirmButtonText: "تمام",
+          });
+        });
+      }
+    });
   };
+
   return (
     <>
       <h1 className="w-100 text-center my-4">Home Page</h1>
